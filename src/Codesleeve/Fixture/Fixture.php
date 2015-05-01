@@ -260,7 +260,7 @@ class Fixture
             $this->processFixture($fixture);
         }
     }
-    
+
     /**
      * Fetches fixture files names for all or only a subset of fixtures.
      *
@@ -270,10 +270,10 @@ class Fixture
     protected function fetchFixtures(array $fixtures = null)
     {
         $availableFixtures = glob("{$this->config['location']}/*.php");
-        
+
         foreach ($availableFixtures as $i => $fixture) {
             $tableName = basename($fixture, '.php');
-            
+
             if ($fixtures && !in_array($tableName, $fixtures)) {
                 unset($availableFixtures[$i]);
             }

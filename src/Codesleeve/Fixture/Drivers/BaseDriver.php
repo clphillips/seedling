@@ -26,7 +26,7 @@ abstract class BaseDriver
         foreach ($tables as $table) {
             $this->db->query("DELETE FROM $table");
         }
-        
+
         $this->tables = array_diff($this->tables, $tables);
     }
 
