@@ -18,7 +18,7 @@ class Crc32Test extends PHPUnit_Framework_TestCase
     {
         $generator = new Crc32();
         $key = $generator->generateKey('foo');
-        
+
         if (PHP_INT_MAX > pow(2, 32)) {
             // 64-bit
             $this->assertEquals(2356372769, $key);
@@ -26,7 +26,7 @@ class Crc32Test extends PHPUnit_Framework_TestCase
             // 32-bit
             $this->assertEquals(208889122, $key);
         }
-        
+
         $generator = new Crc32(10);
         $key = $generator->generateKey('foo', 'bar');
         $this->assertEquals(5, $key);
