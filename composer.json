@@ -1,9 +1,13 @@
 {
-    "name": "codesleeve/fixture",
-    "description": "A framework agnostic, simple (yet elegant) fixture library for php.",
-    "keywords": ["fixture", "test", "testing", "database", "integration"],
+    "name": "clphillips/seedling",
+    "description": "A framework agnostic database seeding and fixture library.",
+    "keywords": ["seeding", "fixture", "test", "testing", "database", "integration"],
     "license": "MIT",
     "authors": [
+        {
+            "name": "Cody Phillips",
+            "email": "therealclphillips@gmail.com"
+        },
         {
             "name": "Travis Bennett",
             "email": "tandrewbennett@hotmail.com"
@@ -23,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Codesleeve\\Fixture\\": "src/Codesleeve/Fixture/"
+            "clphillips\\Seedling\\": "src/"
         },
         "classmap": [
             "tests/eloquent_models"

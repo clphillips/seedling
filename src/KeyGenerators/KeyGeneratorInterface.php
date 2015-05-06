@@ -1,4 +1,4 @@
-<?php namespace Codesleeve\Fixture\KeyGenerators;
+<?php namespace clphillips\Seedling\KeyGenerators;
 
 interface KeyGeneratorInterface
 {

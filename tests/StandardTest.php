@@ -1,7 +1,7 @@
-<?php namespace Codesleeve\Fixture;
+<?php namespace clphillips\Seedling;
 
 use PHPUnit_Framework_TestCase;
-use Codesleeve\Fixture\Drivers\Standard;
+use clphillips\Seedling\Drivers\Standard;
 use Mockery as m;
 use PDO;
 

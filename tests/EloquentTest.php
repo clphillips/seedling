@@ -1,8 +1,8 @@
-<?php namespace Codesleeve\Fixture;
+<?php namespace clphillips\Seedling;
 
 use PHPUnit_Framework_TestCase;
-use Codesleeve\Fixture\Fixture;
-use Codesleeve\Fixture\Drivers\Eloquent;
+use clphillips\Seedling\Fixture;
+use clphillips\Seedling\Drivers\Eloquent;
 use Illuminate\Support\Str;
 use Illuminate\Database\SQLiteConnection;
 use Illuminate\Database\ConnectionResolver;

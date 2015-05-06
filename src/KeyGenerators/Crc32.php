@@ -1,4 +1,4 @@
-<?php namespace Codesleeve\Fixture\KeyGenerators;
+<?php namespace clphillips\Seedling\KeyGenerators;
 
 /**
  * CRC32 Key Generator

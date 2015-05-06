@@ -1,4 +1,4 @@
-<?php namespace Codesleeve\Fixture\Exceptions;
+<?php namespace clphillips\Seedling\Exceptions;
 
 use Exception;
 

@@ -1,10 +1,10 @@
-<?php namespace Codesleeve\Fixture\KeyGenerators;
+<?php namespace clphillips\Seedling\KeyGenerators;
 
-use Codesleeve\Fixture\KeyGenerators\Crc32;
+use clphillips\Seedling\KeyGenerators\Crc32;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @coversDefaultClass Codesleeve\Fixture\KeyGenerators\Crc32
+ * @coversDefaultClass clphillips\Seedling\KeyGenerators\Crc32
  */
 class Crc32Test extends PHPUnit_Framework_TestCase
 {

@@ -1,4 +1,4 @@
-<?php namespace Codesleeve\Fixture\Drivers;
+<?php namespace clphillips\Seedling\Drivers;
 
 interface DriverInterface
 {

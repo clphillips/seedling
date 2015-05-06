@@ -1,7 +1,7 @@
-<?php namespace Codesleeve\Fixture\Drivers;
+<?php namespace clphillips\Seedling\Drivers;
 
-use Codesleeve\Fixture\KeyGenerators\KeyGeneratorInterface;
-use Codesleeve\Fixture\KeyGenerators\Sha1;
+use clphillips\Seedling\KeyGenerators\KeyGeneratorInterface;
+use clphillips\Seedling\KeyGenerators\Sha1;
 
 abstract class BaseDriver
 {
