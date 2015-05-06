@@ -1,6 +1,6 @@
-<?php namespace Codesleeve\Fixture;
+<?php namespace clphillips\Seedling;
 
-use Codesleeve\Fixture\Drivers\DriverInterface;
+use clphillips\Seedling\Drivers\DriverInterface;
 use Faker\Generator;
 
 /**

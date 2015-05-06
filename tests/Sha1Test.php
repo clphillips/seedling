@@ -1,10 +1,10 @@
-<?php namespace Codesleeve\Fixture\KeyGenerators;
+<?php namespace clphillips\Seedling\KeyGenerators;
 
-use Codesleeve\Fixture\KeyGenerators\Sha1;
+use clphillips\Seedling\KeyGenerators\Sha1;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @coversDefaultClass Codesleeve\Fixture\KeyGenerators\Sha1
+ * @coversDefaultClass clphillips\Seedling\KeyGenerators\Sha1
  */
 class Sha1Test extends PHPUnit_Framework_TestCase
 {

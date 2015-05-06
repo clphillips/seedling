@@ -1,6 +1,6 @@
-<?php namespace Codesleeve\Fixture\Drivers;
+<?php namespace clphillips\Seedling\Drivers;
 
-use Codesleeve\Fixture\KeyGenerators\KeyGeneratorInterface;
+use clphillips\Seedling\KeyGenerators\KeyGeneratorInterface;
 use PDO;
 
 class Standard extends BaseDriver implements DriverInterface

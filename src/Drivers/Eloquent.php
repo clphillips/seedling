@@ -1,6 +1,6 @@
-<?php namespace Codesleeve\Fixture\Drivers;
+<?php namespace clphillips\Seedling\Drivers;
 
-use Codesleeve\Fixture\KeyGenerators\KeyGeneratorInterface;
+use clphillips\Seedling\KeyGenerators\KeyGeneratorInterface;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
