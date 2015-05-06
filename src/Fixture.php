@@ -1,15 +1,11 @@
-<?php namespace clphillips\Seedling;
+<?php
+namespace clphillips\Seedling;
 
 use clphillips\Seedling\Drivers\DriverInterface;
 use Faker\Generator;
 
 /**
- * A framework agnostic, simple (yet elegant) fixture library for php.
- *
- * @package Codesleeve/Fixture
- * @version v1.0.0
- * @author Travis Bennett <tandrewbennett@hotmail.com>
- * @link http://travisbennett.net
+ * A framework agnostic database seeding and fixture library.
  */
 class Fixture
 {
@@ -47,7 +43,7 @@ class Fixture
      *
      * @param  array $config
      * @param  DriverInterface $driver
-     * @return Singleton The *Singleton* instance.
+     * @return Fixture
      */
     public static function getInstance(array $config = array(), DriverInterface $driver = null)
     {
@@ -297,7 +293,7 @@ class Fixture
                 "Invalid fixture: $fixture, please ensure this file returns an array of data.",
                 1
             );
-            
+
         }
 
         $this->fixtures[$tableName] = $this->driver->buildRecords($tableName, $records);
