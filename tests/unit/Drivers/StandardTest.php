@@ -19,6 +19,48 @@ class StandardTest extends PHPUnit_Framework_TestCase
             new Standard($this->getPdo(), $this->getKeyGenerator('Sha1'))
         );
     }
+    
+    /**
+     * @covers ::buildRecords
+     * @covers ::__construct
+     * @covers ::setForeignKeys
+     * @covers ::endsWith
+     * @covers \Seedling\Drivers\BaseDriver::generateKey
+     * @uses \Seedling\Drivers\BaseDriver::__construct
+     */
+    public function testBuildRecords()
+    {
+        $tableName = 'table1';
+        $records = array(
+            'Name1' => array(
+                'foreign_id' => 'ForeignName1',
+                'field1' => "value1",
+                'field2' => "value2",
+                'field3' => function ($items) {
+                    return $items['field1'] . $items['field2'];
+                }
+            ),
+            'Name2' => array(
+                'foreign_id' => 'ForeignName2',
+                'field1' => "value1",
+                'field2' => "value2"
+            )
+        );
+        $keyGenerator = $this->getKeyGenerator('Sha1');
+
+        $pdoStatement = $this->getMockBuilder('\PDOStatement')->getMock();
+        $pdoStatement->expects($this->any())
+            ->method('execute');
+
+        $pdo = $this->getPdo();
+        $pdo->expects($this->any())
+            ->method('prepare')
+            ->will($this->returnValue($pdoStatement));
+
+        $driver = new Standard($pdo, $keyGenerator);
+
+        $this->assertNotEmpty($driver->buildRecords($tableName, $records));
+    }
 
     /**
      * Mock a concrete KeyGeneratorInterface
