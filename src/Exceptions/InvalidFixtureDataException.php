@@ -1,4 +1,5 @@
-<?php namespace Seedling\Exceptions;
+<?php
+namespace Seedling\Exceptions;
 
 use Exception;
 

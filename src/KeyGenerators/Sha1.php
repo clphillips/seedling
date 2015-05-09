@@ -1,9 +1,10 @@
-<?php namespace Seedling\KeyGenerators;
+<?php
+namespace Seedling\KeyGenerators;
 
 /**
  * SHA1 Key Generator
  */
-class Sha1
+class Sha1 implements KeyGeneratorInterface
 {
 
     /**
