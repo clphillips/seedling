@@ -25,11 +25,11 @@ Seedling is based on [Fixture](https://github.com/CodeSleeve/fixture) which was 
 ## Installation
 Seedling is distributed as a composer package, which is how it should be used in your app.
 
-Install the package using Composer. Edit your project's `composer.json` file to require `clphillips/seedling`.
+Install the package using Composer. Edit your project's `composer.json` file to require `seedling/seedling`.
 
 ```js
   "require": {
-    "clphillips/seedling": "~1.0"
+    "seedling/seedling": "~1.0"
   }
 ```
 
@@ -124,7 +124,7 @@ into this:
 ```php
 class FooTest extends PHPUnit_Framework_TestCase
 {
-    use clphillips\Seedling\Fixture;
+    use Seedling\Fixture;
 
     /**
      * The fixture instance.
@@ -180,8 +180,8 @@ Fixture currently supports two drivers:
 In order to use fixture, you're going to first need to initialize it. A good place to do this is inside your bootstrap file (configured via your phpunit.xml), but you're certainly welcome to do this where it makes the most sense for you:
 
 ```php
-use clphillips\Seedling\Fixture;
-use clphillips\Seedling\Drivers\Standard;
+use Seedling\Fixture;
+use Seedling\Drivers\Standard;
 
 // Create a pdo instance (this may already exist in your app)
 $db = new \PDO('sqlite::memory:');
@@ -316,8 +316,8 @@ in tests/exampleTest.php
 
 ```php
 
-    use clphillips\Seedling\Fixture;
-    use clphillips\Seedling\Drivers\Standard as StandardDriver;
+    use Seedling\Fixture;
+    use Seedling\Drivers\Standard as StandardDriver;
 
     /**
      * The fixture instance.
@@ -506,8 +506,8 @@ in tests/exampleTest.php
 
 ```php
 
-    use clphillips\Seedling\Fixture;
-    use clphillips\Seedling\Drivers\Eloquent as EloquentDriver;
+    use Seedling\Fixture;
+    use Seedling\Drivers\Eloquent as EloquentDriver;
 
     /**
      * The fixture instance.
