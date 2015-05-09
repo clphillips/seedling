@@ -1,7 +1,7 @@
-<?php namespace clphillips\Seedling;
+<?php namespace Seedling;
 
 use PHPUnit_Framework_TestCase;
-use clphillips\Seedling\Drivers\Standard;
+use Seedling\Drivers\Standard;
 use Mockery as m;
 use PDO;
 

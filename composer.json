@@ -1,5 +1,5 @@
 {
-    "name": "clphillips/seedling",
+    "name": "seedling/seedling",
     "description": "A framework agnostic database seeding and fixture library.",
     "keywords": ["seeding", "fixture", "test", "testing", "database", "integration"],
     "license": "MIT",
@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "clphillips\\Seedling\\": "src/"
+            "Seedling\\": "src/"
         },
         "classmap": [
             "tests/eloquent_models"

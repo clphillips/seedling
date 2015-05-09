@@ -1,4 +1,4 @@
-<?php namespace clphillips\Seedling\Exceptions;
+<?php namespace Seedling\Exceptions;
 
 use Exception;
 

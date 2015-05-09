@@ -1,4 +1,4 @@
-<?php namespace clphillips\Seedling\Drivers;
+<?php namespace Seedling\Drivers;
 
 interface DriverInterface
 {
