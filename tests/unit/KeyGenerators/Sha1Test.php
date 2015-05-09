@@ -7,7 +7,7 @@ use PHPUnit_Framework_TestCase;
  * @coversDefaultClass \Seedling\KeyGenerators\Sha1
  */
 class Sha1Test extends PHPUnit_Framework_TestCase
-{    
+{
     /**
      * @covers ::__construct
      */
@@ -18,7 +18,7 @@ class Sha1Test extends PHPUnit_Framework_TestCase
             new Sha1()
         );
     }
-    
+
     /**
      * @covers ::generateKey
      * @dataProvider generateKeyProvider
@@ -27,7 +27,7 @@ class Sha1Test extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals($result, $generator->generateKey($value, $table));
     }
-    
+
     /**
      * Data Provider
      *

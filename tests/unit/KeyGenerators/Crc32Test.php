@@ -7,7 +7,7 @@ use PHPUnit_Framework_TestCase;
  * @coversDefaultClass \Seedling\KeyGenerators\Crc32
  */
 class Crc32Test extends PHPUnit_Framework_TestCase
-{    
+{
     /**
      * @covers ::__construct
      */
@@ -18,7 +18,7 @@ class Crc32Test extends PHPUnit_Framework_TestCase
             new Crc32()
         );
     }
-    
+
     /**
      * @covers ::generateKey
      * @dataProvider generateKeyProvider
@@ -27,7 +27,7 @@ class Crc32Test extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals($result, $generator->generateKey($value, $table));
     }
-    
+
     /**
      * Data Provider
      *
