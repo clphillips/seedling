@@ -1,7 +1,7 @@
-<?php namespace clphillips\Seedling\Drivers;
+<?php namespace Seedling\Drivers;
 
-use clphillips\Seedling\KeyGenerators\KeyGeneratorInterface;
-use clphillips\Seedling\KeyGenerators\Sha1;
+use Seedling\KeyGenerators\KeyGeneratorInterface;
+use Seedling\KeyGenerators\Sha1;
 
 abstract class BaseDriver
 {

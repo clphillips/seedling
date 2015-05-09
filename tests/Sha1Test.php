@@ -1,10 +1,10 @@
-<?php namespace clphillips\Seedling\KeyGenerators;
+<?php namespace Seedling\KeyGenerators;
 
-use clphillips\Seedling\KeyGenerators\Sha1;
+use Seedling\KeyGenerators\Sha1;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @coversDefaultClass clphillips\Seedling\KeyGenerators\Sha1
+ * @coversDefaultClass Seedling\KeyGenerators\Sha1
  */
 class Sha1Test extends PHPUnit_Framework_TestCase
 {

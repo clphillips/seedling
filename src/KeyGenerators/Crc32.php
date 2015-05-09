@@ -1,4 +1,4 @@
-<?php namespace clphillips\Seedling\KeyGenerators;
+<?php namespace Seedling\KeyGenerators;
 
 /**
  * CRC32 Key Generator

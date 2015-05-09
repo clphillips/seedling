@@ -1,7 +1,7 @@
-<?php namespace clphillips\Seedling;
+<?php namespace Seedling;
 
 use PHPUnit_Framework_TestCase;
-use clphillips\Seedling\Fixture;
+use Seedling\Fixture;
 use Mockery as m;
 
 class FixtureTest extends PHPUnit_Framework_TestCase
@@ -40,7 +40,7 @@ class FixtureTest extends PHPUnit_Framework_TestCase
     {
         $fixture = Fixture::getInstance();
 
-        $this->assertInstanceOf('clphillips\Seedling\Fixture', $fixture);
+        $this->assertInstanceOf('Seedling\Fixture', $fixture);
         $this->assertSame($this->fixture, $fixture);
     }
 
@@ -49,7 +49,7 @@ class FixtureTest extends PHPUnit_Framework_TestCase
     * for fixture locations that don't exist.
     *
      * @test
-    * @expectedException clphillips\Seedling\Exceptions\InvalidFixtureLocationException
+    * @expectedException Seedling\Exceptions\InvalidFixtureLocationException
     * @return void
     */
     public function itShouldThrowAnExceptionIfTheFixturePathDoesNotExist()
@@ -63,7 +63,7 @@ class FixtureTest extends PHPUnit_Framework_TestCase
      * is not an array
      *
      * @test
-     * @expectedException clphillips\Seedling\Exceptions\InvalidFixtureDataException
+     * @expectedException Seedling\Exceptions\InvalidFixtureDataException
      * @return void
      */
     public function itShouldThrowAnExceptionIfTheFixtureIsNotAnArray()
@@ -77,7 +77,7 @@ class FixtureTest extends PHPUnit_Framework_TestCase
      * does not exist
      *
      * @test
-     * @expectedException clphillips\Seedling\Exceptions\InvalidFixtureNameException
+     * @expectedException Seedling\Exceptions\InvalidFixtureNameException
      * @return void
      */
     public function itShouldThrowAnExceptionIfTheFixtureNameDoesNotExist()

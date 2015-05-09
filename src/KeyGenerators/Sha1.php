@@ -1,4 +1,4 @@
-<?php namespace clphillips\Seedling\KeyGenerators;
+<?php namespace Seedling\KeyGenerators;
 
 /**
  * SHA1 Key Generator

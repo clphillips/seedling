@@ -1,6 +1,6 @@
-<?php namespace clphillips\Seedling\Drivers;
+<?php namespace Seedling\Drivers;
 
-use clphillips\Seedling\KeyGenerators\KeyGeneratorInterface;
+use Seedling\KeyGenerators\KeyGeneratorInterface;
 use PDO;
 
 class Standard extends BaseDriver implements DriverInterface

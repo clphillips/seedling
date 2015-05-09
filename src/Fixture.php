@@ -1,7 +1,7 @@
 <?php
-namespace clphillips\Seedling;
+namespace Seedling;
 
-use clphillips\Seedling\Drivers\DriverInterface;
+use Seedling\Drivers\DriverInterface;
 use Faker\Generator;
 
 /**

@@ -1,10 +1,10 @@
-<?php namespace clphillips\Seedling\KeyGenerators;
+<?php namespace Seedling\KeyGenerators;
 
-use clphillips\Seedling\KeyGenerators\Crc32;
+use Seedling\KeyGenerators\Crc32;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @coversDefaultClass clphillips\Seedling\KeyGenerators\Crc32
+ * @coversDefaultClass Seedling\KeyGenerators\Crc32
  */
 class Crc32Test extends PHPUnit_Framework_TestCase
 {
