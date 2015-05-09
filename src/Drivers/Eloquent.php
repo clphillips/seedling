@@ -1,4 +1,5 @@
-<?php namespace Seedling\Drivers;
+<?php
+namespace Seedling\Drivers;
 
 use Seedling\KeyGenerators\KeyGeneratorInterface;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -10,12 +11,6 @@ use PDO;
 
 class Eloquent extends BaseDriver implements DriverInterface
 {
-    /**
-     * A PDO connection instance.
-     *
-     * @var PDO
-     */
-    protected $db;
 
     /**
      * An instance of Laravel's Str class.
@@ -33,8 +28,7 @@ class Eloquent extends BaseDriver implements DriverInterface
      */
     public function __construct(PDO $db, Str $str, KeyGeneratorInterface $keyGenerator = null)
     {
-        parent::__construct($keyGenerator);
-        $this->db = $db;
+        parent::__construct($keyGenerator, $db);
         $this->str = $str;
     }
 
