@@ -1,7 +1,8 @@
 <?php
-namespace Seedling\KeyGenerators;
+namespace Seedling\tests\unit\KeyGenerators;
 
 use PHPUnit_Framework_TestCase;
+use Seedling\KeyGenerators\Sha1;
 
 /**
  * @coversDefaultClass \Seedling\KeyGenerators\Sha1

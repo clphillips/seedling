@@ -1,7 +1,8 @@
 <?php
-namespace Seedling\Exceptions;
+namespace Seedling\tests\unit\Exceptions;
 
 use PHPUnit_Framework_TestCase;
+use Seedling\Exceptions\InvalidFixtureDataException;
 
 /**
  * @coversDefaultClass \Seedling\Exceptions\InvalidFixtureDataException

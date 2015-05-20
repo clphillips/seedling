@@ -2,7 +2,6 @@
 
 use PHPUnit_Framework_TestCase;
 use Seedling\Fixture;
-use Mockery as m;
 
 class FixtureTest extends PHPUnit_Framework_TestCase
 {
@@ -19,14 +18,6 @@ class FixtureTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->fixture = Fixture::getInstance();
-    }
-
-    /**
-     * tearDown method.
-     */
-    public function tearDown()
-    {
-        m::close();
     }
 
     /**

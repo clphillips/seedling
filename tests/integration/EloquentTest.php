@@ -7,7 +7,6 @@ use Illuminate\Support\Str;
 use Illuminate\Database\SQLiteConnection;
 use Illuminate\Database\ConnectionResolver;
 use Illuminate\Database\Eloquent\Model;
-use Mockery as m;
 use PDO;
 
 class EloquentTest extends PHPUnit_Framework_TestCase
@@ -43,7 +42,6 @@ class EloquentTest extends PHPUnit_Framework_TestCase
         $this->db->query("DELETE FROM roles");
         $this->db->query("DELETE FROM games");
         $this->fixture->setFixtures(array());
-        m::close();
     }
 
     /**
@@ -55,6 +53,7 @@ class EloquentTest extends PHPUnit_Framework_TestCase
      */
     public function itShouldPopulateAllFixtures()
     {
+        $this->fixture->setFixtures(array());
         $this->fixture->setConfig(array('location' => __DIR__ . '/fixtures/orm'));
         $this->fixture->up();
 

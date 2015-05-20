@@ -1,7 +1,8 @@
 <?php
-namespace Seedling\Drivers;
+namespace Seedling\tests\unit\Drivers;
 
 use PHPUnit_Framework_TestCase;
+use Seedling\Drivers\BaseDriver;
 
 /**
  * @coversDefaultClass \Seedling\Drivers\BaseDriver

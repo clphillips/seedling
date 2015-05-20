@@ -1,7 +1,8 @@
 <?php
-namespace Seedling\Drivers;
+namespace Seedling\tests\unit\Drivers;
 
 use PHPUnit_Framework_TestCase;
+use Seedling\Drivers\Eloquent;
 
 /**
  * @coversDefaultClass \Seedling\Drivers\Eloquent

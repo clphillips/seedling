@@ -1,7 +1,8 @@
 <?php
-namespace Seedling;
+namespace Seedling\tests\unit;
 
 use PHPUnit_Framework_TestCase;
+use Seedling\Fixture;
 
 /**
  * @coversDefaultClass \Seedling\Fixture
@@ -14,7 +15,7 @@ class FixtureTest extends PHPUnit_Framework_TestCase
      */
     public function testGetInstance()
     {
-        $config = array();
+        $config = array('key' => 'value');
         $driver = $this->getMockBuilder('\Seedling\Drivers\DriverInterface')
             ->getMock();
         $this->assertInstanceOf('\Seedling\Fixture', Fixture::getInstance($config, $driver));
@@ -28,7 +29,6 @@ class FixtureTest extends PHPUnit_Framework_TestCase
     public function testConfig()
     {
         $fixture = Fixture::getInstance();
-        $this->assertNull($fixture->getConfig());
 
         $config = array(
             'key' => 'value'
@@ -66,5 +66,76 @@ class FixtureTest extends PHPUnit_Framework_TestCase
         $this->assertNull($fixture->getFixtures());
         $fixture->setFixtures($fixtures);
         $this->assertEquals($fixtures, $fixture->getFixtures());
+    }
+
+    /**
+     * @covers ::__call
+     * @uses \Seedling\Fixture::getInstance
+     * @uses \Seedling\Fixture::setFixtures
+     */
+    public function testDynamicMethodCall()
+    {
+        $fixtures = array(
+            'Users' => array(
+                'FirstUser' => array(
+                    'id' => 1,
+                    'username' => 'user1'
+                ),
+                'SecondUser' => array(
+                    'id' => 2,
+                    'username' => 'user2'
+                )
+            ),
+            'Roles' => array(
+                'Admin' => array(
+                    'id' => 1,
+                    'name' => 'Admin'
+                )
+            )
+        );
+        
+        $fixture = Fixture::getInstance();
+        $fixture->setFixtures($fixtures);
+        
+        $this->assertEquals(
+            $fixtures['Users']['FirstUser'],
+            call_user_func(array($fixture, 'Users'), 'FirstUser')
+        );
+        $this->assertEquals(
+            $fixtures['Roles'],
+            call_user_func(array($fixture, 'Roles'))
+        );
+    }
+
+    /**
+     * @covers ::__call
+     * @uses \Seedling\Fixture::getInstance
+     * @expectedException \Seedling\Exceptions\InvalidFixtureNameException
+     */
+    public function testDynamicMethodCallException()
+    {
+        $fixture = Fixture::getInstance();
+        $fixture->nonExistentFixture();
+    }
+    
+    /**
+     * @covers ::fake
+     * @covers ::setFaker
+     * @covers ::bootFaker
+     */
+    public function testFake()
+    {
+        $value = 15;
+        $faker = $this->getMockBuilder('\Seedling\tests\unit\Faker')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $faker->method('numberBetween')
+            ->will($this->returnValue($value));
+        
+        Fixture::setFaker($faker);
+        
+        $number = Fixture::fake('numberBetween', $value, $value+1);
+        $this->assertEquals($value, $number);
+        Fixture::setFaker(null);
     }
 }

@@ -1,7 +1,8 @@
 <?php
-namespace Seedling\KeyGenerators;
+namespace Seedling\tests\unit\KeyGenerators;
 
 use PHPUnit_Framework_TestCase;
+use Seedling\KeyGenerators\Crc32;
 
 /**
  * @coversDefaultClass \Seedling\KeyGenerators\Crc32

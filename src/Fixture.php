@@ -232,6 +232,16 @@ class Fixture
 
         return call_user_func_array(array(static::$faker, $method), $params);
     }
+    
+    /**
+     * Set the faker to be used henceforth
+     *
+     * @param object $faker
+     */
+    public static function setFaker($faker)
+    {
+        static::$faker = $faker;
+    }
 
     /**
      * Create an instance of the faker method (if one doesn't already exist)
