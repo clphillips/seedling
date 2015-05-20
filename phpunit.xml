@@ -4,10 +4,19 @@
     backupGlobals="false"
     beStrictAboutTestsThatDoNotTestAnything="true"
     checkForUnintentionallyCoveredCode="true"
+    forceCoversAnnotation="true"
 >
     <testsuites>
-        <testsuite name="Package Test Suite">
-            <directory suffix=".php">./tests/</directory>
+        <testsuite name="Unit">
+            <directory suffix=".php">./tests/unit</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory suffix=".php">./tests/integration</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
 </phpunit>

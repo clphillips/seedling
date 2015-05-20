@@ -1,9 +1,10 @@
-<?php namespace Seedling\KeyGenerators;
+<?php
+namespace Seedling\KeyGenerators;
 
 /**
  * CRC32 Key Generator
  */
-class Crc32
+class Crc32 implements KeyGeneratorInterface
 {
     /**
      * @var int $max The maximum supported CRC32 value

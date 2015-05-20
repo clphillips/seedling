@@ -1,4 +1,5 @@
-<?php namespace Seedling\Drivers;
+<?php
+namespace Seedling\Drivers;
 
 use Seedling\KeyGenerators\KeyGeneratorInterface;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -10,12 +11,6 @@ use PDO;
 
 class Eloquent extends BaseDriver implements DriverInterface
 {
-    /**
-     * A PDO connection instance.
-     *
-     * @var PDO
-     */
-    protected $db;
 
     /**
      * An instance of Laravel's Str class.
@@ -33,8 +28,7 @@ class Eloquent extends BaseDriver implements DriverInterface
      */
     public function __construct(PDO $db, Str $str, KeyGeneratorInterface $keyGenerator = null)
     {
-        parent::__construct($keyGenerator);
-        $this->db = $db;
+        parent::__construct($keyGenerator, $db);
         $this->str = $str;
     }
 
@@ -52,10 +46,10 @@ class Eloquent extends BaseDriver implements DriverInterface
 
         foreach ($records as $recordName => $recordValues) {
             $model = $this->generateModelName($tableName);
-            $record = new $model;
+            $record = $this->createModel($this->generateModelName($tableName));
 
             foreach ($recordValues as $columnName => $columnValue) {
-                $camelKey = camel_case($columnName);
+                $camelKey = $this->camelCase($columnName);
 
                 if (is_callable($columnValue)) {
                     $columnValue = call_user_func($columnValue, $recordValues);
@@ -200,5 +194,33 @@ class Eloquent extends BaseDriver implements DriverInterface
     protected function generateModelName($tableName)
     {
         return $this->str->singular(str_replace(' ', '', ucwords(str_replace('_', ' ', $tableName))));
+    }
+    
+    /**
+     * Convert to camelCase
+     *
+     * @param string $str The value to convert
+     * @return string
+     */
+    protected function camelCase($str)
+    {
+        return lcfirst(
+            str_replace(
+                ' ',
+                '',
+                ucwords(str_replace(array('-', '_'), ' ', $str))
+            )
+        );
+    }
+    
+    /**
+     * Create an instance of the given model
+     *
+     * @param string $modelName
+     * @return object
+     */
+    protected function createModel($modelName)
+    {
+        return new $modelName;
     }
 }

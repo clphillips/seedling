@@ -2,7 +2,6 @@
 
 use PHPUnit_Framework_TestCase;
 use Seedling\Drivers\Standard;
-use Mockery as m;
 use PDO;
 
 class StandardTest extends PHPUnit_Framework_TestCase
@@ -38,7 +37,6 @@ class StandardTest extends PHPUnit_Framework_TestCase
         $this->db->query("DELETE FROM roles");
         $this->db->query("DELETE FROM games");
         $this->fixture->setFixtures(array());
-        m::close();
     }
 
     /**

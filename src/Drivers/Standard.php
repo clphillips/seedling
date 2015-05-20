@@ -1,16 +1,11 @@
-<?php namespace Seedling\Drivers;
+<?php
+namespace Seedling\Drivers;
 
 use Seedling\KeyGenerators\KeyGeneratorInterface;
 use PDO;
 
 class Standard extends BaseDriver implements DriverInterface
 {
-    /**
-     * A PDO connection instance.
-     *
-     * @var PDO
-     */
-    protected $db;
 
     /**
      * Constructor method
@@ -20,8 +15,7 @@ class Standard extends BaseDriver implements DriverInterface
      */
     public function __construct(PDO $db, KeyGeneratorInterface $keyGenerator = null)
     {
-        parent::__construct($keyGenerator);
-        $this->db = $db;
+        parent::__construct($keyGenerator, $db);
     }
 
     /**
