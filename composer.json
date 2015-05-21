@@ -27,7 +27,9 @@
     "autoload": {
         "psr-4": {
             "Seedling\\": "src/"
-        },
+        }
+    },
+    "autoload-dev": {
         "classmap": [
             "tests/integration/eloquent_models"
         ]
