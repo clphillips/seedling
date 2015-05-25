@@ -74,4 +74,19 @@ abstract class BaseDriver
     {
         return $this->keyGenerator->generateKey($value, $tableName);
     }
+
+    /**
+     * Parses a label for its table and label name
+     *
+     * @param string $label The label, possibly including the table name
+     * @return array The table and label
+     */
+    protected function parseRecordLabel($label)
+    {
+        $table = null;
+        if (false !== strpos($label, '.')) {
+            list($table, $label) = explode('.', $label, 2);
+        }
+        return array($table, $label);
+    }
 }
