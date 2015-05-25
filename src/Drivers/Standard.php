@@ -54,7 +54,7 @@ class Standard extends BaseDriver implements DriverInterface
             $sth = $this->db->prepare($sql);
             $sth->execute($values);
 
-            $insertedRecords[$recordName] = (object) $recordValues;
+            $insertedRecords[$label] = (object) $recordValues;
         }
 
         return $insertedRecords;

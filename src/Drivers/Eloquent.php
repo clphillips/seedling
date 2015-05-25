@@ -70,12 +70,12 @@ class Eloquent extends BaseDriver implements DriverInterface
             $primaryKeyName = $record->getKeyName();
             list($table, $label) = $this->parseRecordLabel(
                 $recordName[0] === "."
-                ? $tableName . $recordName[0]
+                ? $tableName . $recordName
                 : $recordName
             );
             $record->$primaryKeyName = $this->generateKey($label, $table);
             $record->save();
-            $insertedRecords[$recordName] = $record;
+            $insertedRecords[$label] = $record;
         }
 
         return $insertedRecords;
