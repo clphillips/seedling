@@ -1,13 +1,13 @@
 <?php
 
 return array (
-    'Diablo3' => array (
+    '.Diablo3' => array (
         'title' => 'Diablo 3',
-        'user' => 'Travis'
+        'user' => 'users.Travis'
     ),
     
-    'Skyrim' => array (
+    '.Skyrim' => array (
         'title' => 'Skyrim',
-        'user' => 'Travis'
+        'user' => 'users.Travis'
     )
 );

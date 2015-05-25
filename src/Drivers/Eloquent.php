@@ -67,13 +67,15 @@ class Eloquent extends BaseDriver implements DriverInterface
                 $record->$columnName = $columnValue;
             }
 
-            // Generate a hash for this record's primary key.  We'll simply hash the name of the
-            // fixture into an integer value so that related fixtures don't have to rely on
-            // an auto-incremented primary key when creating foreign keys.
             $primaryKeyName = $record->getKeyName();
-            $record->$primaryKeyName = $this->generateKey($recordName);
+            list($table, $label) = $this->parseRecordLabel(
+                $recordName[0] === "."
+                ? $tableName . $recordName
+                : $recordName
+            );
+            $record->$primaryKeyName = $this->generateKey($label, $table);
             $record->save();
-            $insertedRecords[$recordName] = $record;
+            $insertedRecords[$label] = $record;
         }
 
         return $insertedRecords;
@@ -116,7 +118,8 @@ class Eloquent extends BaseDriver implements DriverInterface
     protected function insertBelongsTo(Model $record, Relation $relation, $columnValue)
     {
         $foreignKeyName = $relation->getForeignKey();
-        $foreignKeyValue = $this->generateKey($columnValue);
+        list($table, $label) = $this->parseRecordLabel($columnValue);
+        $foreignKeyValue = $this->generateKey($label, $table);
         $record->$foreignKeyName = $foreignKeyValue;
     }
 
@@ -167,11 +170,13 @@ class Eloquent extends BaseDriver implements DriverInterface
 
         $foreignKeyPieces = explode('.', $relation->getForeignKey());
         $foreignKeyName = $foreignKeyPieces[1];
-        $foreignKeyValue = $this->generateKey($recordName);
+        list($table, $label) = $this->parseRecordLabel($recordName);
+        $foreignKeyValue = $this->generateKey($label, $table);
 
         $otherKeyPieces = explode('.', $relation->getOtherKey());
         $otherKeyName = $otherKeyPieces[1];
-        $otherKeyValue = $this->generateKey($relatedRecordName);
+        list($table, $label) = $this->parseRecordLabel($relatedRecordName);
+        $otherKeyValue = $this->generateKey($label, $table);
         
         $fields = "$foreignKeyName, $otherKeyName";
         $values = array($foreignKeyValue, $otherKeyValue);

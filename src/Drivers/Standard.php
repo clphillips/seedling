@@ -38,7 +38,13 @@ class Standard extends BaseDriver implements DriverInterface
             });
 
             $recordValues = $this->setForeignKeys($recordValues);
-            $recordValues = array_merge($recordValues, array('id' => $this->generateKey($recordName)));
+
+            list($table, $label) = $this->parseRecordLabel(
+                $recordName[0] === "."
+                ? $tableName . $recordName[0]
+                : $recordName
+            );
+            $recordValues = array_merge($recordValues, array('id' => $this->generateKey($label, $table)));
 
             $fields = implode(', ', array_keys($recordValues));
             $values = array_values($recordValues);
@@ -48,7 +54,7 @@ class Standard extends BaseDriver implements DriverInterface
             $sth = $this->db->prepare($sql);
             $sth->execute($values);
 
-            $insertedRecords[$recordName] = (object) $recordValues;
+            $insertedRecords[$label] = (object) $recordValues;
         }
 
         return $insertedRecords;
@@ -66,7 +72,8 @@ class Standard extends BaseDriver implements DriverInterface
     {
         foreach ($values as $key => &$value) {
             if ($this->endsWith($key, '_id')) {
-                $value = $this->generateKey($value);
+                list($table, $label) = $this->parseRecordLabel($value);
+                $value = $this->generateKey($label, $table);
             }
         }
 

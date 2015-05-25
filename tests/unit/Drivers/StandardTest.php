@@ -27,6 +27,7 @@ class StandardTest extends PHPUnit_Framework_TestCase
      * @covers ::setForeignKeys
      * @covers ::endsWith
      * @covers \Seedling\Drivers\BaseDriver::generateKey
+     * @covers \Seedling\Drivers\BaseDriver::parseRecordLabel
      * @uses \Seedling\Drivers\BaseDriver::__construct
      */
     public function testBuildRecords()
@@ -45,7 +46,12 @@ class StandardTest extends PHPUnit_Framework_TestCase
                 'foreign_id' => 'ForeignName2',
                 'field1' => "value1",
                 'field2' => "value2"
-            )
+            ),
+            '.Name2' => array(
+                'foreign_id' => 'foreigns.ForeignName2',
+                'field1' => "value1",
+                'field2' => "value2"
+            ),
         );
         $keyGenerator = $this->getKeyGenerator('Sha1');
 

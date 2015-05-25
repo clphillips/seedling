@@ -27,6 +27,7 @@ class EloquentTest extends PHPUnit_Framework_TestCase
      * @covers ::insertRelatedRecords
      * @covers ::camelCase
      * @covers \Seedling\Drivers\BaseDriver::generateKey
+     * @covers \Seedling\Drivers\BaseDriver::parseRecordLabel
      * @uses \Seedling\Drivers\BaseDriver::__construct
      */
     public function testBuildRecords()
