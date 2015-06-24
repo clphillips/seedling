@@ -14,19 +14,19 @@ class Fixture
      *
      * @var array
      */
-    protected $fixtures;
+    protected $fixtures = array();
 
     /**
      * An array of configuration options.
      *
-     * @var Array
+     * @var array
      */
-    protected $config;
+    protected $config = array();
 
     /**
      * The ORM specific database driver that's being used.
      *
-     * @var Driver
+     * @var DriverInterface
      */
     protected $driver;
 
@@ -120,9 +120,9 @@ class Fixture
      * Setter method for the driver instance used by
      * the fixture.
      *
-     * @param Drivers\DriverInterface $driver
+     * @param DriverInterface $driver
      */
-    public function setDriver(Drivers\DriverInterface $driver)
+    public function setDriver(DriverInterface $driver)
     {
         $this->driver = $driver;
     }
@@ -131,7 +131,7 @@ class Fixture
      * Getter method for the driver instance used by
      * the fixture.
      *
-     * @return Drivers\DriverInterface
+     * @return DriverInterface
      */
     public function getDriver()
     {

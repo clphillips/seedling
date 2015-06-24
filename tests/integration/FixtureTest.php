@@ -5,7 +5,7 @@ use Seedling\Fixture;
 
 class FixtureTest extends PHPUnit_Framework_TestCase
 {
-   /**
+    /**
      * An instance of the fixture class.
      *
      * @var Fixture
@@ -36,17 +36,17 @@ class FixtureTest extends PHPUnit_Framework_TestCase
     }
 
    /**
-    * Test that the up method throws an invalid fixture location exception
-    * for fixture locations that don't exist.
-    *
+     * Test that the up method throws an invalid fixture location exception
+     * for fixture locations that don't exist.
+     *
      * @test
-    * @expectedException Seedling\Exceptions\InvalidFixtureLocationException
-    * @return void
-    */
+     * @expectedException Seedling\Exceptions\InvalidFixtureLocationException
+     * @return void
+     */
     public function itShouldThrowAnExceptionIfTheFixturePathDoesNotExist()
     {
-         $this->fixture->setConfig(array('location' => ''));
-         $this->fixture->up();
+        $this->fixture->setConfig(array('location' => ''));
+        $this->fixture->up();
     }
 
    /**

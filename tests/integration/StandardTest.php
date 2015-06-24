@@ -124,6 +124,24 @@ class StandardTest extends PHPUnit_Framework_TestCase
         $this->assertGreaterThan(0, $roleCount);
         $this->assertEquals(0, $gameCount);
     }
+    
+    /**
+     * Test that down can be called before up, which is necessary in seeding.
+     *
+     * @test
+     * @return void
+     */
+    public function itShouldPermitDownBeforeUp()
+    {
+        $this->fixture->setConfig(array('location' => __DIR__ . '/fixtures/standard'));
+        
+        $this->assertEmpty($this->fixture->getFixtures());
+        
+        $this->fixture->down();
+        $this->fixture->up();
+        
+        $this->assertNotEmpty($this->fixture->getFixtures());
+    }
 
     /**
      * Test that the down method will truncate fixtures that were not processed

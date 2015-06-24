@@ -63,7 +63,7 @@ class FixtureTest extends PHPUnit_Framework_TestCase
 
         $fixtures = array('table1' => array(), 'table2' => array());
 
-        $this->assertNull($fixture->getFixtures());
+        $this->assertEmpty($fixture->getFixtures());
         $fixture->setFixtures($fixtures);
         $this->assertEquals($fixtures, $fixture->getFixtures());
     }
