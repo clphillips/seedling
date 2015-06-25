@@ -36,6 +36,7 @@ class StandardTest extends PHPUnit_Framework_TestCase
         $this->db->query("DELETE FROM users");
         $this->db->query("DELETE FROM roles");
         $this->db->query("DELETE FROM games");
+        $this->db->query("DELETE FROM games_played");
         $this->fixture->setFixtures(array());
     }
 
@@ -59,7 +60,7 @@ class StandardTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $userCount);
         $this->assertEquals(1, $roleCount);
         $this->assertEquals(1, $gameCount);
-        $this->assertCount(3, $this->fixture->getFixtures());
+        $this->assertCount(4, $this->fixture->getFixtures());
     }
 
     /**
@@ -178,6 +179,10 @@ class StandardTest extends PHPUnit_Framework_TestCase
         $db->exec("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, first_name TEXT, last_name TEXT)");
         $db->exec("CREATE TABLE IF NOT EXISTS roles (id INTEGER PRIMARY KEY, name TEXT)");
         $db->exec("CREATE TABLE IF NOT EXISTS games (id INTEGER PRIMARY KEY, user_id INTEGER, title TEXT)");
+        $db->exec(
+            "CREATE TABLE IF NOT EXISTS games_played
+            (game_id INTEGER, user_id INTEGER, PRIMARY KEY (game_id, user_id))"
+        );
 
         return $db;
     }

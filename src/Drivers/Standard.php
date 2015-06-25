@@ -44,7 +44,10 @@ class Standard extends BaseDriver implements DriverInterface
                 ? $tableName . $recordName[0]
                 : $recordName
             );
-            $recordValues = array_merge($recordValues, array('id' => $this->generateKey($label, $table)));
+            
+            if (!is_string($recordName) && !empty($recordName)) {
+                $recordValues['id'] = $this->generateKey($label, $table);
+            }
 
             $fields = implode(', ', array_keys($recordValues));
             $values = array_values($recordValues);
