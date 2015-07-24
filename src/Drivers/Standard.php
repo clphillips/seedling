@@ -7,6 +7,8 @@ use PDO;
 class Standard extends BaseDriver implements DriverInterface
 {
 
+    protected $pdoDriver;
+
     /**
      * Constructor method
      *
@@ -16,6 +18,7 @@ class Standard extends BaseDriver implements DriverInterface
     public function __construct(PDO $db, KeyGeneratorInterface $keyGenerator = null)
     {
         parent::__construct($keyGenerator, $db);
+        $this->pdoDriver = $db->getAttribute(PDO::ATTR_DRIVER_NAME);
     }
 
     /**
@@ -44,15 +47,20 @@ class Standard extends BaseDriver implements DriverInterface
                 ? $tableName . $recordName[0]
                 : $recordName
             );
-            
+
             if (!is_string($recordName) && !empty($recordName)) {
                 $recordValues['id'] = $this->generateKey($label, $table);
             }
 
-            $fields = implode(', ', array_keys($recordValues));
+            $cols = array();
+            foreach (array_keys($recordValues) as $col) {
+                $cols[] = $this->quoteIdentifier($col);
+            }
+            $fields = implode(', ', $cols);
             $values = array_values($recordValues);
             $placeholders = rtrim(str_repeat('?, ', count($recordValues)), ', ');
-            $sql = "INSERT INTO $tableName ($fields) VALUES ($placeholders)";
+            $sql = "INSERT INTO " . $this->quoteIdentifier($tableName)
+                . " ($fields) VALUES ($placeholders)";
 
             $sth = $this->db->prepare($sql);
             $sth->execute($values);
@@ -93,5 +101,28 @@ class Standard extends BaseDriver implements DriverInterface
     protected function endsWith($haystack, $needle)
     {
         return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
+    }
+
+    /**
+     * Quotes the string as an identifier
+     *
+     * @param string $str The identifier
+     * @return string The quoted identifier
+     */
+    protected function quoteIdentifier($str)
+    {
+        $open = '"';
+        $close = '"';
+        switch ($this->pdoDriver) {
+            case 'mysql':
+                $open = '`';
+                $close = '`';
+                break;
+            case 'mssql':
+                $open = '[';
+                $close = ']';
+                break;
+        }
+        return $open . str_replace($open, $open . $open, $str) . $close;
     }
 }
