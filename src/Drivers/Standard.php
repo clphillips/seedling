@@ -48,7 +48,7 @@ class Standard extends BaseDriver implements DriverInterface
                 : $recordName
             );
 
-            if (!is_string($recordName) && !empty($recordName)) {
+            if (!is_int($recordName)) {
                 $recordValues['id'] = $this->generateKey($label, $table);
             }
 
