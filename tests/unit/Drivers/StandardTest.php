@@ -55,6 +55,8 @@ class StandardTest extends PHPUnit_Framework_TestCase
             ),
         );
         $keyGenerator = $this->getKeyGenerator('Sha1');
+        $keyGenerator->expects($this->exactly(6))
+            ->method('generateKey');
 
         $pdoStatement = $this->getMockBuilder('\PDOStatement')->getMock();
         $pdoStatement->expects($this->any())
