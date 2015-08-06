@@ -17,7 +17,7 @@ class BaseDriverTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('\Seedling\Drivers\BaseDriver', $this->getDriver(null, null));
     }
-    
+
     /**
      * @covers ::truncate
      * @covers ::__construct
@@ -35,7 +35,7 @@ class BaseDriverTest extends PHPUnit_Framework_TestCase
 
         $this->assertNull($driver->truncate($tables));
     }
-    
+
     /**
      * Data provider for testTruncate
      */
@@ -46,6 +46,24 @@ class BaseDriverTest extends PHPUnit_Framework_TestCase
             array(array('table1', 'table2'), true),
             array(array('table1', 'table2'), false),
         );
+    }
+
+    /**
+     * @covers ::generateKey
+     * @covers ::__construct
+     */
+    public function testGenerateKey()
+    {
+        $label = 'label';
+        $table = 'table';
+
+        $keyGenerator = $this->getKeyGenerator('AutoIncrement');
+        $keyGenerator->expects($this->once())
+            ->method('generateKey')
+            ->with($label, $table);
+
+        $driver = $this->getDriver($keyGenerator, $this->getPdo());
+        $driver->generateKey($label, $table);
     }
 
     /**

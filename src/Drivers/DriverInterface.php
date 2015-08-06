@@ -18,4 +18,12 @@ interface DriverInterface
      * @return void
      */
     public function truncate(array $tables = null);
+
+    /**
+     * Generate a key using the provided key generator
+     *
+     * @param string $value
+     * @param string $tableName
+     */
+    public function generateKey($value, $tableName = null);
 }

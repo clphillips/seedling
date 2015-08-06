@@ -20,12 +20,13 @@ class StandardTest extends PHPUnit_Framework_TestCase
             new Standard($this->getPdo(), $this->getKeyGenerator('Sha1'))
         );
     }
-    
+
     /**
      * @covers ::buildRecords
      * @covers ::__construct
      * @covers ::setForeignKeys
      * @covers ::endsWith
+     * @covers ::quoteIdentifier
      * @covers \Seedling\Drivers\BaseDriver::generateKey
      * @covers \Seedling\Drivers\BaseDriver::parseRecordLabel
      * @uses \Seedling\Drivers\BaseDriver::__construct

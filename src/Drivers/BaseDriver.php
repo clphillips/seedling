@@ -70,7 +70,7 @@ abstract class BaseDriver
      * @param string $value
      * @param string $tableName
      */
-    protected function generateKey($value, $tableName = null)
+    public function generateKey($value, $tableName = null)
     {
         return $this->keyGenerator->generateKey($value, $tableName);
     }
