@@ -71,6 +71,40 @@ class StandardTest extends PHPUnit_Framework_TestCase
 
         $this->assertNotEmpty($driver->buildRecords($tableName, $records));
     }
+    
+    /**
+     * @covers ::buildRecords
+     * @covers ::__construct
+     * @covers ::setForeignKeys
+     * @covers ::endsWith
+     * @covers ::quoteIdentifier
+     * @covers \Seedling\Drivers\BaseDriver::generateKey
+     * @covers \Seedling\Drivers\BaseDriver::parseRecordLabel
+     * @uses \Seedling\Drivers\BaseDriver::__construct
+     */
+    public function testBuildRecordsWithForeignKeyLiterals()
+    {
+        $tableName = 'table2';
+        $records = array(
+            array(
+                'foreign1_id' => 3,
+                'foreign2_id' => 11
+            )
+        );
+
+        $pdoStatement = $this->getMockBuilder('\PDOStatement')->getMock();
+        $pdoStatement->expects($this->any())
+            ->method('execute');
+
+        $pdo = $this->getPdo();
+        $pdo->expects($this->any())
+            ->method('prepare')
+            ->will($this->returnValue($pdoStatement));
+
+        $driver = new Standard($pdo, $this->getKeyGenerator('AutoIncrement'));
+        $result = $driver->buildRecords($tableName, $records);
+        $this->assertEquals($records[0], (array) $result[0]);
+    }
 
     /**
      * Mock a concrete KeyGeneratorInterface

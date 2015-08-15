@@ -82,7 +82,7 @@ class Standard extends BaseDriver implements DriverInterface
     protected function setForeignKeys(array $values)
     {
         foreach ($values as $key => &$value) {
-            if ($this->endsWith($key, '_id')) {
+            if ($this->endsWith($key, '_id') && !is_int($value)) {
                 list($table, $label) = $this->parseRecordLabel($value);
                 $value = $this->generateKey($label, $table);
             }
